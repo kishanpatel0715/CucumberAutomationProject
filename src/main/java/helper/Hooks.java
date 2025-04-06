@@ -1,6 +1,7 @@
-package steps;
+package helper;
 
 import org.openqa.selenium.WebDriver;
+
 import io.cucumber.java.After;
 
 public class Hooks {
