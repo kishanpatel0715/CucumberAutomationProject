@@ -19,7 +19,6 @@ public class FirstSteps {
 	
 	public FirstSteps(Browser manageDriver)
 	{
-		System.out.println("FirstSteps constructor is invoked");
 		driver = Browser.driver;
 		firstPage = new FirstPage(driver);
 				
@@ -61,8 +60,6 @@ public class FirstSteps {
 	{
 	  String title = driver.getTitle();
 	
-	  System.out.println("Hhehehehehehehheehhe: Swag Labs" + title);
-	
 	 Assert.assertEquals(title,"Swag Labs");
 	 Assert.assertTrue(true);
 	 Assert.assertFalse(false);
@@ -70,8 +67,6 @@ public class FirstSteps {
 	 Assert.assertNotEquals("kc", "kcp");
 	 Assert.assertNull(null);
 	 Assert.assertSame("kc", "kc");
-	 	 
-	 System.out.println("Hhehehehehehehheehhe: Swag Labs" + title);
 	}	
 	
 	@Then("Error message {string} is displayed\" is displayed")

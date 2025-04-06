@@ -9,7 +9,6 @@ public class FirstPage {
 	
 	public FirstPage(WebDriver driver)
 	{
-		System.out.println("FirstPage constructor is invoked");
 		this.driver = driver;
 	}
 	

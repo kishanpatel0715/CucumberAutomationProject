@@ -24,6 +24,7 @@ public class Browser {
 	    	option.addArguments("--disable-extentions");
 	    	option.addArguments("--disable-popup-blocking");
 	    	option.addArguments("--disable-gpu");
+	    	option.addArguments("--no-sandbox");
 	    	option.addArguments("--incognito");	        
 	        option.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
 	       // option.addArguments("--headless");

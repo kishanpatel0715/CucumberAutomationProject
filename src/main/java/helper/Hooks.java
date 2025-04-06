@@ -1,17 +1,23 @@
 package helper;
 
+import io.cucumber.java.After;
 import org.openqa.selenium.WebDriver;
 
-import io.cucumber.java.After;
 
 public class Hooks {
 	
 public WebDriver driver;
 	
 	public Hooks()
-	{
-		System.out.println("Hook constructor is invoked");
+	{		
+		System.out.println("Hooks Constructorrrrrrrrrrrrrrrrrrrrrrrrr");
 		this.driver = Browser.driver;	
+	}
+	
+	@After
+	public void teardown()
+	{
+		driver.quit();
 	}
 	
 	/*
@@ -28,12 +34,6 @@ public WebDriver driver;
 		System.out.println("2222222222222222222222222222222222222222222222");	
 	} */
 		
-	@After (order=1)
-	public void teardown1()
-	{
-		driver.quit();
-	}
-		
 	/*
 	@After (order=2)
 	public void teardown2()
@@ -45,13 +45,13 @@ public WebDriver driver;
 
 	/*
 	@BeforeStep
-	public void bstep()
+	public void beforeStep()
 	{
 		System.out.println("BaforeSteppppppppppppppppppppppppppppppppppppppppppp");
 	}
 	
 	@AfterStep
-	public void astep()
+	public void afterStepstep()
 	{
 		System.out.println("AfterStepppppppppppppppppppppppppppppppppppppppppppppp");
 	} */

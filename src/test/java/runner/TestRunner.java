@@ -8,12 +8,11 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/java/feature",
-        glue = "steps",
+        glue = {"steps", "helper"},
         plugin = {"pretty", "html:target/CucumberHtmlReport.html", "json:target/cucumber.json"},
         monochrome = true,
         tags = "@Login" 
         )// Run only the scenario with this tag
-
         
 public class TestRunner {
 
