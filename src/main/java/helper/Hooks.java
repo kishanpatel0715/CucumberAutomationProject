@@ -10,11 +10,10 @@ public WebDriver driver;
 	
 	public Hooks()
 	{		
-		System.out.println("Hooks Constructorrrrrrrrrrrrrrrrrrrrrrrrr");
 		this.driver = Browser.driver;	
 	}
 	
-	@After
+	@After (order = 1)
 	public void teardown()
 	{
 		driver.quit();
@@ -22,23 +21,23 @@ public WebDriver driver;
 	
 	/*
 	@Before (value = "@One", order =1)
-	public void setup1()
+	public void setupOne()
 	{
-		System.out.println("11111111111111111111111111111111111111111111");		
+		System.out.println("Before Method with order 1 gets executed before order 2");		
 	}
 	
 	
 	@Before (order=2)
-	public void setup2()
+	public void setupTwo()
 	{		
-		System.out.println("2222222222222222222222222222222222222222222222");	
+		System.out.println("Before Method with order 2 gets executed after order 1");	
 	} */
 		
 	/*
 	@After (order=2)
 	public void teardown2()
 	{
-		System.out.println("4444444444444444444444444444444444444444444444");
+		System.out.println("After Method with order 2 gets executed before order 1");
 		driver.quit();
 	}
 	*/
@@ -47,12 +46,12 @@ public WebDriver driver;
 	@BeforeStep
 	public void beforeStep()
 	{
-		System.out.println("BaforeSteppppppppppppppppppppppppppppppppppppppppppp");
+		System.out.println("Method gets executed before each step");
 	}
 	
 	@AfterStep
 	public void afterStepstep()
 	{
-		System.out.println("AfterStepppppppppppppppppppppppppppppppppppppppppppppp");
+		System.out.println("Method gets executed after each step");
 	} */
 }

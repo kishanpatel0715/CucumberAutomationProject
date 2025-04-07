@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
 import helper.Browser;
+import helper.ConfigReader;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -28,7 +29,7 @@ public class FirstSteps {
 	@Given("User is on the login page")
 	public void user_is_on_the_login_page() 
 	{		
-		firstPage.navigateToUrl("https://www.saucedemo.com/");
+		firstPage.navigateToUrl(ConfigReader.get("baseUrl"));
 		
 		//firstPageFacModel.navigateToUrl("https://www.saucedemo.com/");
 	}
@@ -61,12 +62,12 @@ public class FirstSteps {
 	  String title = driver.getTitle();
 	
 	 Assert.assertEquals(title,"Swag Labs");
-	 Assert.assertTrue(true);
+	 /*Assert.assertTrue(true);
 	 Assert.assertFalse(false);
 	 Assert.assertNotNull("kc");
-	 Assert.assertNotEquals("kc", "kcp");
+	 Assert.assertNotEquals(title, "Swag Labss");
 	 Assert.assertNull(null);
-	 Assert.assertSame("kc", "kc");
+	 Assert.assertSame(title, "Swag Labs"); */
 	}	
 	
 	@Then("Error message {string} is displayed\" is displayed")
