@@ -1,7 +1,7 @@
 package helper;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class ConfigReader {
@@ -12,7 +12,7 @@ public class ConfigReader {
     {
     	properties = new Properties();
   
-        FileInputStream configFile = new FileInputStream("C:\\Users\\kisha\\eclipse-workspace\\AutomationCucumberProject\\src\\main\\resources\\Config.properties");
+    	InputStream configFile = ConfigReader.class.getClassLoader().getResourceAsStream("Config.properties");
         properties.load(configFile);
        
         return properties;
