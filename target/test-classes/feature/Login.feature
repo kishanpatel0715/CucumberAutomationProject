@@ -1,32 +1,29 @@
-@Login
-Feature: Login Feature
+@Login @NightlyRun
+Feature: LogIn
+  This feature file covers the login scenarios
 
   Background: 
     Given User is on the login page
 
-  @SmokeTest1 @One @Two @JayGanesh
-  Scenario: TC15 SSuccessful Login with Valid Credentials
-    When User enters "standard_user" or "secret_sauce"
-    And Clicks on login button
-    Then User should be redirected to the home page
-
-  @SmokeTest2 @Three
-  Scenario: TC12 FFailed login with invalid username and password
-    When User enters "test" and "test123"
-    And Clicks on login button
-    Then Error message "Epic sadface: Username and password do not match any user in this service" is displayed" is displayed
-
-  @SmokeTest3 @Example1
-  Scenario Outline: Title of your scenario outline
-    When User enters <UserName> and <Password>
-    And Clicks on login button
-    Then User should be redirected to the home page
+  Scenario: TC:123456 Verify Successful Login with Valid Credentials
+    When user enters "standard_user" and "secret_sauce"
+    And user login
+    Then user is logged-in successfully
+    
+  Scenario Outline: TC:123457 Verify Login With Invalid Credentials
+    When user enters invalid <User_Name> and <Password>
+    And user login
+    Then Error message is displayed
 
     Examples: 
-      | UserName      | Password     |
-      | standard_user | secret_sauce |
-      | problem_user  | secret_sauce |
-      | abc           | abc          |
+      | User_Name | Password |
+      | Kishan    | Patel    |
+      | CV        | Patel    |
 
-  @Skip
-  Scenario: TC100 FFailed login with invalid username and password
+  Scenario: TC:123458 Verify Successful Log-Out
+    When user enters "standard_user" and "secret_sauce"
+    And user login
+    Then user is logged-in successfully
+    When user opens side-menu
+    And user logout
+    Then user is logged-out

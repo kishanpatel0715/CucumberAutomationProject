@@ -1,6 +1,9 @@
 package helper;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
@@ -19,24 +22,36 @@ public class Browser {
 	 public static EdgeOptions edgeOption ; 
 	 public static FirefoxOptions fireFoxOption ; 
 	 
-	 
 	 public Browser() throws IOException
 	 {
 		 prop = ConfigReader.initializeProp();
-		 driver = getDriver(ConfigReader.get("browser"));
+		 getDriver(ConfigReader.get("browser"));
+		 
 	 }
 	 
+	
+ 
 	 public WebDriver getChromeDriver()
 	 {
+		 File partialPath = new File(ConfigReader.get("downloadPath"));
+	     String downloadPath = partialPath.getAbsolutePath();
+	     
+		 System.out.println("lololollolololooloogftgtfryuuy: " + downloadPath);
+		Map<String, Object> prefs = new HashMap<>();
+		prefs.put("download.default_directory", downloadPath); // Make sure it's an absolute path
+		prefs.put("download.prompt_for_download", false);
 		
 		option = new ChromeOptions();
+		
+		option.setExperimentalOption("prefs", prefs);
+		
 	 	option.addArguments("--start-maximized");
 	 	option.addArguments("--disable-notifications");
 	 	option.addArguments("--disable-extentions");
 	 	option.addArguments("--disable-popup-blocking");
 	 	option.addArguments("--disable-gpu");
 	 	option.addArguments("--no-sandbox");
-	 	option.addArguments("--incognito");	        
+	 	//option.addArguments("--incognito");	        
 	    option.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
 	
 	    System.out.println("lololollolololooloogftgtfryuuy: " + ConfigReader.get("headless"));
@@ -44,7 +59,9 @@ public class Browser {
 	     {
 	    	option.addArguments("--headless");
 	     }
-	        
+	             
+	 
+	     
 	     driver = new ChromeDriver(option);
 	     
 	     return driver;			 
@@ -66,7 +83,9 @@ public class Browser {
 	     if(ConfigReader.get("headless") == "true") 
 	     {
 	    	 edgeOption.addArguments("--headless");
-	     }		
+	     }	
+	     
+	
 		     
 		 driver = new EdgeDriver(edgeOption);
 		 return driver;
