@@ -5,12 +5,13 @@ Feature: LogIn
   Background: 
     Given User is on the login page
 
-  Scenario: TC:123456 Verify Successful Login with Valid Credentials
-    When user enters "standard_user" and "secret_sauce"
+@one
+  Scenario: TC123456 Verify Successful Login with Valid Credentials
+    When user enters "standard_users" and "secret_sauce"
     And user login
     Then user is logged-in successfully
     
-  Scenario Outline: TC:123457 Verify Login With Invalid Credentials
+  Scenario Outline: TC123457 Verify Login With Invalid Credentials
     When user enters invalid <User_Name> and <Password>
     And user login
     Then Error message is displayed
@@ -20,7 +21,7 @@ Feature: LogIn
       | Kishan    | Patel    |
       | CV        | Patel    |
 
-  Scenario: TC:123458 Verify Successful Log-Out
+  Scenario: TC123458 Verify Successful Log-Out
     When user enters "standard_user" and "secret_sauce"
     And user login
     Then user is logged-in successfully

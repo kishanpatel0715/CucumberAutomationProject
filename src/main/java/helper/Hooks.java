@@ -1,8 +1,18 @@
 package helper;
 
 import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
+import io.cucumber.java.Scenario;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-
+import com.google.common.io.Files;
 
 public class Hooks {
 	
@@ -19,39 +29,27 @@ public WebDriver driver;
 		driver.quit();
 	}
 	
-	/*
-	@Before (value = "@One", order =1)
-	public void setupOne()
-	{
-		System.out.println("Before Method with order 1 gets executed before order 2");		
-	}
-	
-	
-	@Before (order=2)
-	public void setupTwo()
-	{		
-		System.out.println("Before Method with order 2 gets executed after order 1");	
-	} */
-		
-	/*
-	@After (order=2)
-	public void teardown2()
-	{
-		System.out.println("After Method with order 2 gets executed before order 1");
-		driver.quit();
-	}
-	*/
-
-	/*
-	@BeforeStep
-	public void beforeStep()
-	{
-		System.out.println("Method gets executed before each step");
-	}
-	
 	@AfterStep
-	public void afterStepstep()
-	{
-		System.out.println("Method gets executed after each step");
-	} */
+	public void afterStep(Scenario scenario) throws IOException {
+	    if (scenario.isFailed()) {
+
+	    TakesScreenshot takeScreenshot = (TakesScreenshot) driver;
+	    File sourceScreenShot = takeScreenshot.getScreenshotAs(OutputType.FILE);
+	        
+	    File relativePath = new File(ConfigReader.get("screenshotPath"));
+	    String screenshotDirectory = relativePath.getAbsolutePath();    
+	    File screenshotDir = new File(screenshotDirectory);
+	        
+        if (!screenshotDir.exists()) 
+        {
+	      screenshotDir.mkdirs();
+	    }
+
+	   String screenshotName = scenario.getName().replace(" ", "_") + "_" + new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()) + ".png";
+
+	   Path destFilePath = Paths.get(screenshotDirectory, screenshotName);
+       File destSSFile = new File(destFilePath.toString());	     
+	   Files.copy(sourceScreenShot, destSSFile);	     	        	        	    
+	   }
+	}	
 }

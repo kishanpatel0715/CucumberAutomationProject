@@ -39,16 +39,6 @@ public class WindowsTab_StepDefinitions {
     {
     	Object[] windows = driver.getWindowHandles().toArray();
     	driver.switchTo().window(windows[1].toString());
-
-    		       /* Extras: If you want to do back and fourth between opened windows or tabs 
-    		       // ReadOnlyCollection<string> windoHandles = driver.WindowHandles;
-    		       //string[] windoHandles = driver.WindowHandles.ToArray();
-    		       List<string> windoHandles = driver.WindowHandles.ToList();
-
-    		       for (int i=0; i< windoHandles.Count; i++)
-    		       {
-    		           driver.SwitchTo().Window(windoHandles[i]);
-    		       } */
     }
     
     @Then("newly opened tab is displayed with text {string}")

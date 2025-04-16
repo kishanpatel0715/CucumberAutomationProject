@@ -2,7 +2,6 @@ package pages;
 
 import java.io.File;
 import java.nio.file.Paths;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

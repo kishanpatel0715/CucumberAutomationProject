@@ -5,10 +5,10 @@ Feature: DownloadUpload
   Background: 
     Given User is on the Download and Upload page
 
-  Scenario: Verify Download
+  Scenario: TC912345 Verify Download
     When user downloads the file
     Then file is downloaded successfully
     
-  Scenario: Verify Upload
+  Scenario: TC912346 Verify Upload
     When user uploads the file
     Then file is uploaded successfully
