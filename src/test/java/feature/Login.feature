@@ -5,9 +5,8 @@ Feature: LogIn
   Background: 
     Given User is on the login page
 
-@one
   Scenario: TC123456 Verify Successful Login with Valid Credentials
-    When user enters "standard_users" and "secret_sauce"
+    When user enters "standard_user" and "secret_sauce"
     And user login
     Then user is logged-in successfully
     

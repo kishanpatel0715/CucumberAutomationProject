@@ -1,7 +1,6 @@
 package pages;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.openqa.selenium.By;
@@ -87,9 +86,8 @@ public class PracticeForm_Page {
         formHelper.selectFromCustomDropDown(cityElement, city);
     }
 
-    public void enterPracticeFormData(List<Map<String, String>>  modelList)
+    public void enterPracticeFormData(Map<String, String>  model)
     {
-    	Map<String, String> model = modelList.get(0);
         setFirstName (model.get("First Name"));
         setLastName(model.get("Last Name"));
         setEmail(model.get("Email"));
@@ -108,13 +106,11 @@ public class PracticeForm_Page {
         driver.findElement(submitElement).click();
     }
 
-    public List<Map<String, String>> getSubmittedData()
+    public Map<String, String> getSubmittedData()
     {
-        List<Map<String,String>> listOfFormData = new ArrayList<>();
         WebElement table = driver.findElement(By.className("modal-body"));
         List<WebElement> columns = table.findElements(By.tagName("td"));
-
-        Map<String, String> record = new LinkedHashMap<>();
+        Map<String,String> record = new HashMap<>();
         
         record.put("First Name", columns.get(1).getText());
         record.put("Email", columns.get(3).getText());
@@ -125,7 +121,6 @@ public class PracticeForm_Page {
         record.put("Current Address", columns.get(17).getText());
         record.put("State", columns.get(19).getText());
        
-        listOfFormData.add(record);
-        return listOfFormData;
+        return record;
     }
 }

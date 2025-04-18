@@ -52,7 +52,7 @@ public class Login_StepDefinitions {
     	boolean isSideMenuIsDisplayed;
     	try
         {
-    	   isSideMenuIsDisplayed = driver.findElement(loginPage.sideMenuElement).isDisplayed();
+    	   isSideMenuIsDisplayed = waitHelper.waitForElementToBeVisible(loginPage.sideMenuElement,4).isDisplayed();
     	}
 
         catch(NoSuchElementException e)

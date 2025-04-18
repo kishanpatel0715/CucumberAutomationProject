@@ -48,7 +48,7 @@ public class Browser {
 	 	option.addArguments("--disable-popup-blocking");
 	 	option.addArguments("--disable-gpu");
 	 	option.addArguments("--no-sandbox");
-	 	//option.addArguments("--incognito");	        
+	 	option.addArguments("--incognito");	        
 	    option.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
 	
 	     if(ConfigReader.get("headless").contains("true")) 
