@@ -6,11 +6,11 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/java/feature",
-        glue = {"steps", "helper", "Models", "pages", "context"},
+        features = "src/test/java",
+        glue = {"steps", "helper", "Models", "pages", "context", "api_Steps"},
         plugin = {"pretty", "html:target/CucumberHtmlReport.html", "json:target/cucumber.json"},
         monochrome = true,
-        tags = "@one" 
+        tags = "@two" 
         )// Run only the scenario with this tag
         
 public class TestRunner {

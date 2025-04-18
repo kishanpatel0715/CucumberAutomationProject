@@ -24,9 +24,12 @@ public WebDriver driver;
 	}
 	
 	@After (order = 1)
-	public void teardown()
+	public void teardown(Scenario scenario)
 	{
-		driver.quit();
+		 if (!scenario.getSourceTagNames().contains("@API")) 
+		 {
+			 driver.quit();
+		 }
 	}
 	
 	@AfterStep
