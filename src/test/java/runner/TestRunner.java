@@ -10,7 +10,7 @@ import io.cucumber.junit.CucumberOptions;
         glue = {"steps", "helper", "Models", "pages", "context", "api_Steps"},
         plugin = {"pretty", "html:target/CucumberHtmlReport.html", "json:target/cucumber.json"},
         monochrome = true,
-        tags = "@DownloadUpload" 
+        tags = "@two" 
         )// Run only the scenario with this tag
         
 public class TestRunner {
