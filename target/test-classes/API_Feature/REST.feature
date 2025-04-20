@@ -1,4 +1,4 @@
-@API
+@API @REST
 Feature: API
   This feature file covers the API related scenarios.
 
