@@ -1,4 +1,4 @@
-package steps;
+package api_Steps;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,7 +17,7 @@ public class SOAP_StepDefinitions {
 	@When("user sends a SOAP request to perform sum of two numbers {int} and {int}")
 	public void user_sends_a_soap_request_to_perform_sum_of_two_numbers_and(int int1, int int2) throws IOException {
 	    
-		File soap_Add_Request_File = new File("./XML_Files/Calculator_Add_SOAP_Req.xml");
+		File soap_Add_Request_File = new File("./XML_SOAP_Req_Files/Calculator_Add_SOAP_Req.xml");
 		FileInputStream file = new FileInputStream(soap_Add_Request_File);
 		String file_Content = IOUtils.toString(file, "UTF-8");
 		

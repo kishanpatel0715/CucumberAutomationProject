@@ -33,7 +33,10 @@ public WebDriver driver;
 	}
 	
 	@AfterStep
-	public void afterStep(Scenario scenario) throws IOException {
+	public void afterStep(Scenario scenario) throws IOException 
+	{
+		if (!scenario.getSourceTagNames().contains("@API")) 
+		{
 	    if (scenario.isFailed()) {
 
 	    TakesScreenshot takeScreenshot = (TakesScreenshot) driver;
@@ -53,6 +56,7 @@ public WebDriver driver;
 	   Path destFilePath = Paths.get(screenshotDirectory, screenshotName);
        File destSSFile = new File(destFilePath.toString());	     
 	   Files.copy(sourceScreenShot, destSSFile);	     	        	        	    
+	   }
 	   }
 	}	
 }

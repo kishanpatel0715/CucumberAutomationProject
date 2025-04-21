@@ -23,6 +23,6 @@ public class JSONSchema_StepDefinitions {
 	
 	@Then("JSON schema validation is completed successfully")
 	public void json_schema_validation_is_completed_successfully() {
-		jsonSchema_Page.verifyJSONSchema(response, "comments_schema.json");
+		jsonSchema_Page.verifyJSONSchema(response, "comments_json_schema.json");
 	}
 }
