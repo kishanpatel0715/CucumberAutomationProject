@@ -2,15 +2,11 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import helper.Browser;
 
 public class WindowsTab_Page {
 
-	WebDriver driver;
-	
-	public WindowsTab_Page(WebDriver driver)
-	{
-		this.driver = driver;
-	}
+	WebDriver driver = Browser.getDriver();;
 	
 	public By newTabElement = By.id("tabButton");
 	public By newTabTextElement = By.id("sampleHeading");

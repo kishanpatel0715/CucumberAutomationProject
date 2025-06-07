@@ -2,7 +2,6 @@ package steps;
 
 import java.util.NoSuchElementException;
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
 import helper.Browser;
 import helper.CommonMethods;
 import helper.ConfigReader;
@@ -16,14 +15,11 @@ public class Login_StepDefinitions {
 
 	Login_Page loginPage;
 	CommonMethods commonMethods;
-    WebDriver driver;
     WaitHelper waitHelper;
   
-
 	public Login_StepDefinitions(Browser manageDriver)
 	{
-		   driver = Browser.driver;
-		   loginPage = new Login_Page(driver);
+		   loginPage = new Login_Page();
 		   commonMethods = new CommonMethods();		
 		   waitHelper = new WaitHelper();
 	}

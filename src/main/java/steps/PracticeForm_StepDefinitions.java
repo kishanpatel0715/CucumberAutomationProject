@@ -15,15 +15,14 @@ import pages.PracticeForm_Page;
 
 public class PracticeForm_StepDefinitions {
 
-    WebDriver driver;
+    WebDriver driver = Browser.getDriver();
     PracticeForm_Page practiceForm_Page;
     WaitHelper waitHelper;
     CommonMethods commonMethods;
     
     public PracticeForm_StepDefinitions(Browser manageDriver)
     {
-        driver = Browser.driver;
-        practiceForm_Page = new PracticeForm_Page(driver);
+        practiceForm_Page = new PracticeForm_Page();
         waitHelper = new WaitHelper();
         commonMethods = new CommonMethods();
     }

@@ -2,7 +2,7 @@
 Feature: Alerts
   This feature file covers the Alert scenarios
   
-  @one
+  @one 
   Scenario: TC423459 Verify alert
     When user navigates to the Alerts, Frame & Windows page page
     And user clicks on button to see alert

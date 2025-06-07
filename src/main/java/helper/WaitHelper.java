@@ -1,7 +1,6 @@
 package helper;
 
 import java.time.Duration;
-
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,13 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class WaitHelper {
 
-	WebDriver driver;
+	WebDriver driver = Browser.getDriver();;
     WebDriverWait wait;
-	
-	public WaitHelper()
-	{
-		driver = Browser.driver;
-	}
 	
 	public WebElement waitForElementToBeVisible(By element, int timeOutInSeconds)
 	{

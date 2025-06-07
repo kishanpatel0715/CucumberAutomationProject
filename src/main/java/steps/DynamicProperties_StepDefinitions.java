@@ -1,9 +1,7 @@
 package steps;
 
 import java.util.NoSuchElementException;
-
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import helper.Browser;
 import helper.CommonMethods;
@@ -14,17 +12,15 @@ import pages.DynamicProperties_Page;
 
 public class DynamicProperties_StepDefinitions {
 
-    WebDriver driver;
     CommonMethods commonMethods;
     WaitHelper waitHelper;
     DynamicProperties_Page dynamicProperties_Page;
     
     public DynamicProperties_StepDefinitions(Browser manageDriver)
     {
-        driver = Browser.driver;
         commonMethods = new CommonMethods();
         waitHelper = new WaitHelper();
-        dynamicProperties_Page = new DynamicProperties_Page(driver);
+        dynamicProperties_Page = new DynamicProperties_Page();
     }
     
     @When("user navigates to the Dynamic Properties page")

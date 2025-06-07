@@ -6,13 +6,14 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
+import helper.Browser;
+
 public class FirstPageFacModel {
 
-	WebDriver driver;
+	WebDriver driver = Browser.getDriver();;
 	
 	public FirstPageFacModel(WebDriver driver)
 	{
-		this.driver = driver;
 		AjaxElementLocatorFactory driverAJ = new AjaxElementLocatorFactory(driver,3); 
 		PageFactory.initElements(driverAJ, this);
 	}

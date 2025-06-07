@@ -1,7 +1,6 @@
 package helper;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -20,15 +19,18 @@ public class Browser {
 	 public static ChromeOptions option ; 
 	 public static EdgeOptions edgeOption ; 
 	 public static FirefoxOptions fireFoxOption ; 
-	 
-	 public Browser() throws IOException
-	 {
-		 prop = ConfigReader.initializeProp();
-		 getDriver(ConfigReader.get("browser"));	 
-	 }
-	 
 	 File partialDownloadPath;
 	 String downloadPath;
+
+	 public void setDriver(WebDriver initializedDriver)
+	 {
+		 driver = initializedDriver;
+	 }
+	 
+	 public static WebDriver getDriver()
+	 {
+		 return driver;
+	 }
 	 
 	 public WebDriver getChromeDriver()
 	 {
@@ -101,7 +103,7 @@ public class Browser {
 		 return driver;
 	 }
 	 
-	 WebDriver getDriver(String browser)
+	 WebDriver getBrowserDriver(String browser)
 	 {
 		 switch(browser.toLowerCase())
 		 {

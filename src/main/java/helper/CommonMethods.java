@@ -5,12 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class CommonMethods {
 	
-	WebDriver driver;
-	
-	public CommonMethods()
-	{
-		driver = Browser.driver;
-	}
+	WebDriver driver = Browser.getDriver();
 
 	public void visit(String url)
 	{

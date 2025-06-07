@@ -3,16 +3,16 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import helper.Browser;
 import helper.CommonMethods;
 
 public class Alerts_Page {
 
-	WebDriver driver;
+	WebDriver driver = Browser.getDriver();;
     CommonMethods commonMethods;
 	
 	public Alerts_Page(WebDriver driver)
 	{
-		this.driver = driver;
         commonMethods = new CommonMethods();
 	}
 	

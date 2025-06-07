@@ -5,22 +5,17 @@ import java.nio.file.Paths;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import helper.Browser;
 import helper.ConfigReader;
 import helper.DownloadHelper;
 
 public class DownloadUpload_Page {
 
-	WebDriver driver;
-	
-	public DownloadUpload_Page(WebDriver driver)
-	{
-		this.driver = driver;
-	}
+	WebDriver driver = Browser.getDriver();;
 	
     By downloadElement = By.linkText("Download");
     By uploadElement = By.cssSelector("input[type=file]");
     By uploadedFileNameElement = By.id("uploadedFilePath");
-
 
     public void download() throws InterruptedException
     {

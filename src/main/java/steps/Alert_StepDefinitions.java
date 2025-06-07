@@ -13,7 +13,7 @@ import pages.Alerts_Page;
 
 public class Alert_StepDefinitions {
 
-	 WebDriver driver;
+	 WebDriver driver = Browser.getDriver();;
 	 WaitHelper waitHelper;
 	 CommonMethods commonMethods;
 	 Alerts_Page alerts_Page;
@@ -21,13 +21,11 @@ public class Alert_StepDefinitions {
 
 	 public Alert_StepDefinitions(Browser manageDriver)
 	 {
-	     driver = Browser.driver;
 	     waitHelper = new WaitHelper();
 	     commonMethods = new CommonMethods();
 	     alerts_Page = new Alerts_Page(driver);
 	     alertContext = new AlertContext();
 	 }
-	 
 
      @When("user navigates to the Alerts, Frame & Windows page page")
      public void WhenUserNavigatesToTheAlertsFrameWindowsPagePage()

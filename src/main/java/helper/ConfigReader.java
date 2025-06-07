@@ -8,14 +8,12 @@ public class ConfigReader {
 
     public static Properties properties;
 
-    public static Properties initializeProp() throws IOException 
+    public static void initializeProp() throws IOException 
     {
     	properties = new Properties();
   
     	InputStream configFile = ConfigReader.class.getClassLoader().getResourceAsStream("Config.properties");
         properties.load(configFile);
-       
-        return properties;
     }
     
     public static String get(String key) {

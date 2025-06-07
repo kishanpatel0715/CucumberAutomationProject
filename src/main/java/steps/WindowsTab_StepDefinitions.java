@@ -11,14 +11,13 @@ import pages.WindowsTab_Page;
 
 public class WindowsTab_StepDefinitions {
 
-    WebDriver driver;
+    WebDriver driver = Browser.getDriver();
     WindowsTab_Page windowsTab_Page;
     CommonMethods commonMethods;
     
     public WindowsTab_StepDefinitions(Browser manageDriver)
     {
-        driver = Browser.driver;
-        windowsTab_Page = new WindowsTab_Page(driver);
+        windowsTab_Page = new WindowsTab_Page();
         commonMethods = new CommonMethods();
     }
     

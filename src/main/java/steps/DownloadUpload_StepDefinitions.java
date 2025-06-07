@@ -3,7 +3,6 @@ package steps;
 import java.io.File;
 import java.nio.file.Paths;
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
 import helper.Browser;
 import helper.CommonMethods;
 import helper.ConfigReader;
@@ -14,15 +13,13 @@ import pages.DownloadUpload_Page;
 
 public class DownloadUpload_StepDefinitions {
 
-	WebDriver driver;
 	CommonMethods commonMethods;
 	DownloadUpload_Page downloadUpload_Page;
 
 	public DownloadUpload_StepDefinitions(Browser manageDriver)
 	{
-	    driver = Browser.driver;
 	    commonMethods = new CommonMethods();
-	    downloadUpload_Page = new DownloadUpload_Page(driver);
+	    downloadUpload_Page = new DownloadUpload_Page();
 	}
 	
 	@Given("User is on the Download and Upload page")
@@ -53,9 +50,9 @@ public class DownloadUpload_StepDefinitions {
 	  downloadUpload_Page.upload();
 	}
 	
-	 @Then("file is uploaded successfully")
-	 public void ThenFileIsUploadedSuccessfully()
-	 {
-		Assert.assertTrue("File is not uploaded", downloadUpload_Page.getUploadedFileName().contains("Kohli.png"));
-	 }
+	@Then("file is uploaded successfully")
+	public void ThenFileIsUploadedSuccessfully()
+	{
+	  Assert.assertTrue("File is not uploaded", downloadUpload_Page.getUploadedFileName().contains("Kohli.png"));
+	}
 }

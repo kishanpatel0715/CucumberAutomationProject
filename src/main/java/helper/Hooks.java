@@ -2,6 +2,7 @@ package helper;
 
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
+import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +10,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -16,11 +19,21 @@ import com.google.common.io.Files;
 
 public class Hooks {
 	
-public WebDriver driver;
+    WebDriver driver;		
+	Properties prop;
+	Browser browser;
 	
-	public Hooks()
-	{		
-		this.driver = Browser.driver;	
+ 	public Hooks() throws IOException
+ 	{
+ 		ConfigReader.initializeProp();
+ 		browser = new Browser();
+ 	}
+ 	
+	@Before
+	public void setup()
+	{
+		driver = browser.getBrowserDriver(ConfigReader.get("browser"));
+		browser.setDriver(driver);
 	}
 	
 	@After (order = 1)

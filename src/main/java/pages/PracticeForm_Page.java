@@ -6,17 +6,17 @@ import java.util.Map;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import helper.Browser;
 import helper.FormHelper;
 import helper.ScrollHelper;
 
 public class PracticeForm_Page {
 
-	WebDriver driver;
+	WebDriver driver = Browser.getDriver();
     FormHelper formHelper;
 	
-	public PracticeForm_Page(WebDriver driver)
+	public PracticeForm_Page()
 	{
-		this.driver = driver;
         formHelper = new FormHelper();
 	}
 	

@@ -2,15 +2,11 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import helper.Browser;
 
 public class FirstPage {
 	
-	WebDriver driver;
-	
-	public FirstPage(WebDriver driver)
-	{
-		this.driver = driver;
-	}
+	WebDriver driver = Browser.getDriver();;
 	
     private By userNameEle = By.id("user-name");
 	private By passwordEle = By.name("password");
