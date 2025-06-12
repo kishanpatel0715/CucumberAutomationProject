@@ -1,9 +1,9 @@
 package steps;
 
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+
 import helper.Browser;
-import helper.CommonMethods;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -11,57 +11,55 @@ import pages.WindowsTab_Page;
 
 public class WindowsTab_StepDefinitions {
 
-    WebDriver driver = Browser.getDriver();
+    WebDriver driver = Browser.getBrowserDriverInstance();
     WindowsTab_Page windowsTab_Page;
-    CommonMethods commonMethods;
     
-    public WindowsTab_StepDefinitions(Browser manageDriver)
+    public WindowsTab_StepDefinitions()
     {
         windowsTab_Page = new WindowsTab_Page();
-        commonMethods = new CommonMethods();
     }
     
-    @Given("User is on the Browser Windows page")
-    public void GivenUserIsOnTheBrowserWindowsPage()
+    @Given("the user selects Browser Windows from sub-menu")
+    public void the_user_selects_browser_windows_from_submenu()
     {
-    	commonMethods.visit("https://demoqa.com/browser-windows");
+    	windowsTab_Page.selectBrowserWindowsFromSubMenu();
     }
     
-    @When("user clicks on New Tab button")
-    public void WhenUserClicksOnNewTabButton()
+    @When("the user clicks the New Tab button")
+    public void the_user_clicks_the_new_tab_button()
     {
     	windowsTab_Page.openNewTab();
     }
     
-    @When("user navigates to the newly opened tab")
-    public void WhenUserNavigatesToTheNewlyOpenedTab()
+    @When("the user switches to the newly opened tab")
+    public void the_user_switches_to_the_newly_opened_tab()
     {
     	Object[] windows = driver.getWindowHandles().toArray();
     	driver.switchTo().window(windows[1].toString());
     }
     
-    @Then("newly opened tab is displayed with text {string}")
-    public void ThenNewlyOpenedTabIsDisplayedWithText(String expectedText)
+    @Then("the new tab is displayed with the text {string}")
+    public void the_new_tab_is_displayed_with_the_text(String expectedText)
     {
-       Assert.assertEquals("Text is incorrect", expectedText, windowsTab_Page.getNewTabText());
+       Assert.assertEquals(windowsTab_Page.getNewTabText(), expectedText, "Text is incorrect");
     }
     
-    @When("user clicks on New Window button")
-    public void WhenUserClicksOnNewWindowButton()
+    @When("the user clicks the New Window button")
+    public void the_user_clicks_the_new_window_button()
     {
        windowsTab_Page.openNewWindow();
     }
     
-    @When("user navigates to the newly opened window")
-    public void WhenUserNavigatesToTheNewlyOpenedWindow()
+    @When("the user switches to the newly opened window")
+    public void user_switches_to_the_newly_opened_window()
     {
     	Object[] windows = driver.getWindowHandles().toArray();
     	driver.switchTo().window(windows[1].toString());
     }
     
-    @Then("newly opened window is displayed with text {string}")
-    public void ThenNewlyOpenedWindowIsDisplayedWithText(String expectedText)
+    @Then("the new window is displayed with the text {string}")
+    public void new_window_is_displayed_with_the_text(String expectedText)
     {
-        Assert.assertEquals("Text is incorrect", expectedText, windowsTab_Page.getNewWindowText());
+        Assert.assertEquals(windowsTab_Page.getNewWindowText(), expectedText, "Text is incorrect");
     }
 }

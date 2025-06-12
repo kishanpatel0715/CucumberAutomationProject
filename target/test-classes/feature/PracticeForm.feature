@@ -2,9 +2,13 @@
 Feature: PracticeForm
   This feature file covers the Form scenarios
 
-  Scenario: TC123459 Verify Practice Form submission
-    When user navigates to the practice form page
-    And user enters following details:
+	Background:
+		Given the user navigates to DemoQA home page
+		And the user selects the Forms from menu
+		
+  Scenario: TC123459 Verify successful Practice Form submission
+    When the user selects Practice Form from the sub-menu
+    And the user enters following details:
       | First Name      | Kishan                                             |
       | Last Name       | Patel                                              |
       | Email           | kcpatel07150715@gmail.com                          |
@@ -16,9 +20,9 @@ Feature: PracticeForm
       | Current Address | 25 red sky                                         |
       | State           | Haryana                                            |
       | City            | Panipat                                            |
-    And user submits the form
-    Then form is submitted successfully
-    And following details are displayed
+    And the user submits the form
+    Then the form is submitted successfully
+    And the following details are displayed:
       | First Name      | Kishan                                             |
       | Last Name       | Patel                                              |
       | Email           | kcpatel07150715@gmail.com                          |
@@ -30,8 +34,3 @@ Feature: PracticeForm
       | Current Address | 25 red sky                                         |
       | State           | Haryana                                            |
       | City            | Panipat                                            |
-    
-    
-    
-      #| First Name | Last Name | Email                     | Gender | Mobile     | Subjects   | Hobbies | Picture   | Current Address | State   | City    |
-      #| Kishan     | Patel     | kcpatel07150715@gmail.com | Female | 5879735451 | Automation | Reading | Kohli.png | 25 red sky      | Haryana | Panipat |

@@ -1,58 +1,57 @@
 package steps;
 
 import java.util.NoSuchElementException;
-import org.junit.Assert;
-import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.TimeoutException;
+import org.testng.Assert;
+
 import helper.Browser;
-import helper.CommonMethods;
 import helper.WaitHelper;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import pages.DynamicProperties_Page;
 
 public class DynamicProperties_StepDefinitions {
 
-    CommonMethods commonMethods;
     WaitHelper waitHelper;
     DynamicProperties_Page dynamicProperties_Page;
     
     public DynamicProperties_StepDefinitions(Browser manageDriver)
     {
-        commonMethods = new CommonMethods();
         waitHelper = new WaitHelper();
         dynamicProperties_Page = new DynamicProperties_Page();
     }
     
-    @When("user navigates to the Dynamic Properties page")
-    public void WhenUserNavigatesToTheDynamicPropertiesPage()
+    @Given("user selects Dynamic Properties from sub-menu")
+    public void user_selects_dynamic_properties_from_submenu()
     {
-    	commonMethods.visit("https://demoqa.com/dynamic-properties");
+    	dynamicProperties_Page.selectDynamicPropertiesFromSubMenu();
     }
     
     @Then("after {int} seconds, button is visible")
-    public void ThenAfterSecondsButtonIsVisible(int second) throws InterruptedException
+    public void after_seconds_button_is_visible(int second) throws InterruptedException
     {
     	boolean isElementDisplayedAfter5Sec;
 
     	try
     	{
-    	   isElementDisplayedAfter5Sec = waitHelper.waitForElementToBeVisible(dynamicProperties_Page.visibleAfter5SecElement, second).isDisplayed();
+    	   isElementDisplayedAfter5Sec = waitHelper.waitForElementToBeVisible(dynamicProperties_Page.visibleAfter5SecElement, 5).isDisplayed();
     	}
     	
-    	catch (WebDriverException e)   
+    	catch (TimeoutException e)   
     	{
     	   isElementDisplayedAfter5Sec = false;
     	}
+    	
         catch (NoSuchElementException e)
     	{
     	   isElementDisplayedAfter5Sec = false;
     	}
     	
-    	Assert.assertTrue("Button is not visible after 5 seconds", isElementDisplayedAfter5Sec);
+    	Assert.assertTrue(isElementDisplayedAfter5Sec, "Button is not visible after 5 seconds");
     }
     
     @Then("after {int} seconds, button is enabled")
-    public void ThenAfterSecondsButtonIsEnabled(int p0)
+    public void after_seconds_button_is_enabled(int p0)
     {
     	boolean isElementEnabledAfter5Sec;
         try
@@ -65,6 +64,6 @@ public class DynamicProperties_StepDefinitions {
     		 isElementEnabledAfter5Sec = false;
     	}
 
-    	Assert.assertTrue("Button is not enabled after 5 seconds", isElementEnabledAfter5Sec);
+    	Assert.assertTrue(isElementEnabledAfter5Sec, "Button is not enabled after 5 seconds");
     }
 }

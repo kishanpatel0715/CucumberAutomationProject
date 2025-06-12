@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public class ScrollHelper {
 
-	WebDriver driver = Browser.getDriver();;
+	WebDriver driver = Browser.getBrowserDriverInstance();;
 
 	 public void scrollToTheElement(By element)
 	 {

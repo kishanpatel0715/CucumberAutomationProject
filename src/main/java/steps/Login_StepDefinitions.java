@@ -1,49 +1,49 @@
 package steps;
 
 import java.util.NoSuchElementException;
-import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import helper.Browser;
-import helper.CommonMethods;
-import helper.ConfigReader;
 import helper.WaitHelper;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.Login_Page;
+import runner.TestRunner;
 
 public class Login_StepDefinitions {
 
 	Login_Page loginPage;
-	CommonMethods commonMethods;
     WaitHelper waitHelper;
+    WebDriver driver;
   
-	public Login_StepDefinitions(Browser manageDriver)
+	public Login_StepDefinitions()
 	{
+		   driver = Browser.getBrowserDriverInstance(); 
 		   loginPage = new Login_Page();
-		   commonMethods = new CommonMethods();		
 		   waitHelper = new WaitHelper();
 	}
 	
     @Given("User is on the login page")
-    public void GivenUserIsOnTheLoginPage()
+    public void user_is_on_the_login_page()
     {
-       commonMethods.visit(ConfigReader.get("baseUrl"));
+       driver.get(TestRunner.baseUrlSauceDemo);
     }
     
     @When("user enters {string} and {string}")
-    public void WhenUserEntersAnd(String userName, String password)
+    public void user_enters_and(String userName, String password)
     {
     	loginPage.enterCredential(userName, password);
     }
     
     @When("user login")
-    public void WhenUserLogin()
+    public void User_Login()
     {
     	loginPage.login();
     }
     
     @Then("user is logged-in successfully")
-    public void ThenUserIsLogged_InSuccessfully()
+    public void user_is_loggedin_successfully()
     {
     	boolean isSideMenuIsDisplayed;
     	try
@@ -56,29 +56,29 @@ public class Login_StepDefinitions {
     	   isSideMenuIsDisplayed = false;
     	}
 
-        Assert.assertTrue("Login is failed", isSideMenuIsDisplayed);
+        Assert.assertTrue(isSideMenuIsDisplayed, "Login is failed");
     }
     
     @When("^user enters invalid (.*) and (.*)$")
-    public void WhenUserEntersInvalidCredentials(String userName, String password)
+    public void user_enters_invalid_credentials(String userName, String password)
     {
         loginPage.enterCredential(userName, password);
     }
     
     @When("user opens side-menu")
-    public void WhenUserOpensSideMenu()
+    public void user_opens_sidemenu()
     {
     	loginPage.opensMenu();
     }
     
     @When("user logout")
-    public void WhenUserLogout()
+    public void user_logout()
     {
     	loginPage.logout();
     }
     
     @Then("Error message is displayed")
-    public void ThenErrorMessageIsDisplayed()
+    public void error_message_is_displayed()
     {
     	boolean isErrorMessageDisplayed;
 
@@ -92,11 +92,11 @@ public class Login_StepDefinitions {
     	    isErrorMessageDisplayed = false;
         }
 
-        Assert.assertTrue("Invalid user gets logged in successfully", isErrorMessageDisplayed);
+        Assert.assertTrue(isErrorMessageDisplayed, "Invalid user gets logged in successfully");
     	}
     
     @Then("user is logged-out")
-    public void ThenUserIsLogged_Out()
+    public void user_is_loggedout()
     {
         boolean isLoginButtonDisplayed;
 
@@ -110,6 +110,6 @@ public class Login_StepDefinitions {
     		 isLoginButtonDisplayed = false;
     	}
 
-        Assert.assertTrue("Logout is failed", isLoginButtonDisplayed);
+        Assert.assertTrue(isLoginButtonDisplayed, "Logout is failed");
     }
 }

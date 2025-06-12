@@ -16,13 +16,13 @@ public class JSONSchema_StepDefinitions {
 		jsonSchema_Page = new JSONSchema_Page();
 	}
 	
-	@When("user sends a request to {string}")
-	public void user_sends_a_request_to(String commentsURI) {
+	@When("the user sends a request to {string}")
+	public void the_user_sends_a_request_to(String commentsURI) {
 		response = given().when().get(commentsURI);
 	}
 	
-	@Then("JSON schema validation is completed successfully")
-	public void json_schema_validation_is_completed_successfully() {
+	@Then("the JSON schema validation is completed successfully")
+	public void the_JSON_schema_validation_is_completed_successfully() {
 		jsonSchema_Page.verifyJSONSchema(response, "comments_json_schema.json");
 	}
 }

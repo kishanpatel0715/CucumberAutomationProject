@@ -4,24 +4,29 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import helper.Browser;
-import helper.CommonMethods;
 
 public class Alerts_Page {
 
-	WebDriver driver = Browser.getDriver();;
-    CommonMethods commonMethods;
-	
-	public Alerts_Page(WebDriver driver)
-	{
-        commonMethods = new CommonMethods();
-	}
+	WebDriver driver = Browser.getBrowserDriverInstance();;
 	
 	public By AlertElement = By.id("alertButton");
-	public By DelayedAlertElement = By.xpath("//*[contains(@id, 'timerAlert')]");
-	public By ConfirmBoxElement = By.xpath("//*[starts-with(@id, 'confirmButton')]");
+	public By DelayedAlertElement = By.id("timerAlertButton");
+	public By ConfirmBoxElement = By.id("confirmButton");
 	public By ConfirmResultTextElement = By.xpath("//*[text()='Cancel' or text()='Ok']");
 	public By PromptElement = By.id("promtButton");
-
+	public By AlertsFrameWindowsMenuElement = By.xpath("//*[text()='Alerts, Frame & Windows']");
+	public By AlertsSubmenuElement = By.xpath("/html/body/div[2]/div/div/div/div[1]/div/div/div[3]/div/ul/li[2]/span");
+	
+	public void selectAlertsFrameWindowsFromMenu()
+	{
+		driver.findElement(AlertsFrameWindowsMenuElement).click();
+	}
+	
+	public void selectAlertsFromSubMenu()
+	{
+		driver.findElement(AlertsSubmenuElement).click();
+	}
+	
 	public WebElement GetEnteredNameSuccessText(String name)
 	{
 	    return driver.findElement(By.xpath("//*[text()= '" + name + "']"));
@@ -29,21 +34,21 @@ public class Alerts_Page {
 
 	public void openAlert()
 	{
-	    commonMethods.click(AlertElement);
+	    driver.findElement(AlertElement).click();
 	}
 
 	public void openDelayedAlert()
 	{
-	    commonMethods.click(DelayedAlertElement);
+	    driver.findElement(DelayedAlertElement).click();
 	}
 
 	public void openConfirmBoxPopUp()
 	{
-	    commonMethods.click(ConfirmBoxElement);
+	    driver.findElement(ConfirmBoxElement).click();
 	}
 
 	public void openPromptBoxPopUp()
 	{
-	    commonMethods.click(PromptElement);
+	    driver.findElement(PromptElement).click();
 	}
 }

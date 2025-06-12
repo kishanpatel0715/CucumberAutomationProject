@@ -2,13 +2,12 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
 import helper.Browser;
 import helper.WaitHelper;
 
 public class Login_Page {
 
-	WebDriver driver = Browser.getDriver();;
+	WebDriver driver = Browser.getBrowserDriverInstance();
 	
 	public By userNameElement = By.id("user-name");
 	public By passwordElement = By.id("password");
@@ -19,8 +18,6 @@ public class Login_Page {
 
 	public void enterCredential(String userName, String password)
 	{
-	    driver.get("https://www.saucedemo.com/");
-
 	    driver.findElement(userNameElement).sendKeys(userName);
 	    driver.findElement(passwordElement).sendKeys(password);          
 	}

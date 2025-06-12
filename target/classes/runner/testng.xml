@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="TestSuite" parallel = "tests" data-provider-thread-count="3">
+
+	<parameter name= "browser" value= "chrome"/>
+	<parameter name= "baseUrlSauceDemo" value= "https://www.saucedemo.com/"/>
+	<parameter name= "baseUrlDemoQa" value= "https://demoqa.com/"/>
+	<parameter name= "downloadPath" value= "Downloads"/>
+	<parameter name= "uploadPath" value= "Uploads"/>
+	<parameter name= "screenshotPath" value= "Screenshots"/>
+
+    <test name="TestRun">
+        <classes>
+            <class name="runner.TestRunner"/>
+        </classes>
+    </test>
+
+</suite>

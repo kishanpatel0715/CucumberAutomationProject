@@ -12,7 +12,7 @@ import helper.ScrollHelper;
 
 public class PracticeForm_Page {
 
-	WebDriver driver = Browser.getDriver();
+	WebDriver driver = Browser.getBrowserDriverInstance();
     FormHelper formHelper;
 	
 	public PracticeForm_Page()
@@ -30,7 +30,19 @@ public class PracticeForm_Page {
     public By stateElement = By.id("state");
     public By cityElement = By.id("city");
     public By submitElement = By.id("submit");
-    
+	public By FormsMenuElement = By.xpath("//*[text()='Forms']");
+	public By PracticeFormSubmenuElement = By.xpath("/html/body/div[2]/div/div/div/div[1]/div/div/div[2]/div/ul/li/span");
+	
+	public void selectFormsFromMenu()
+	{
+		driver.findElement(FormsMenuElement).click();
+	}
+	
+	public void selectPracticeFormFromSubMenu()
+	{
+		driver.findElement(PracticeFormSubmenuElement).click();
+	}
+	
     public void setFirstName(String firstName) {
         formHelper.enterFormFieldData(firstNameElement, firstName);
     }

@@ -14,8 +14,8 @@ public class SOAP_StepDefinitions {
 
 	Response response;
 	
-	@When("user sends a SOAP request to perform sum of two numbers {int} and {int}")
-	public void user_sends_a_soap_request_to_perform_sum_of_two_numbers_and(int int1, int int2) throws IOException {
+	@When("the user sends a SOAP request to calculate the sum of {int} and {int}")
+	public void the_user_sends_a_SOAP_request_to_calculate_the_sum_of_and(int int1, int int2) throws IOException {
 	    
 		File soap_Add_Request_File = new File("./XML_SOAP_Req_Files/Calculator_Add_SOAP_Req.xml");
 		FileInputStream file = new FileInputStream(soap_Add_Request_File);
@@ -30,8 +30,8 @@ public class SOAP_StepDefinitions {
 //		System.out.println(response.then().log().all());
 	}
 	
-	@Then("{int} is displayed as a sum")
-	public void is_displayed_as_a_sum(int sum) {
+	@Then("{int} is displayed as the result")
+	public void is_displayed_as_the_result(int sum) {
 		response.then().body("//*:AddResult.text()", equalTo(Integer.toString(sum)));
 	}
 }

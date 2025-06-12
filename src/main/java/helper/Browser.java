@@ -3,38 +3,36 @@ package helper;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
+import runner.TestRunner;
 
 public class Browser {		
 	
-	 Properties prop;
 	 public static WebDriver driver;
 	 public static ChromeOptions option ; 
 	 public static EdgeOptions edgeOption ; 
-	 public static FirefoxOptions fireFoxOption ; 
-	 File partialDownloadPath;
-	 String downloadPath;
+	 static File partialDownloadPath;
+	 static String downloadPath;
 
-	 public void setDriver(WebDriver initializedDriver)
+	 private static final ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
+	 
+	 public static void setBrowserDriverInstance(String browser)
 	 {
-		 driver = initializedDriver;
+		threadLocalDriver.set(getBrowserDriverInstance(browser));
 	 }
 	 
-	 public static WebDriver getDriver()
+	 public static WebDriver getBrowserDriverInstance()
 	 {
-		 return driver;
+		 return threadLocalDriver.get();
 	 }
 	 
-	 public WebDriver getChromeDriver()
+	 public static WebDriver createChromeDriver()
 	 {
-		partialDownloadPath = new File(ConfigReader.get("downloadPath"));
+		partialDownloadPath = new File(TestRunner.downloadPath);
 	    downloadPath = partialDownloadPath.getAbsolutePath();
 	    
 		Map<String, Object> prefs = new HashMap<>();
@@ -53,16 +51,11 @@ public class Browser {
 	 	option.addArguments("--incognito");	        
 	    option.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
 	
-	     if(ConfigReader.get("headless").contains("true")) 
-	     {
-	    	option.addArguments("--headless");
-	     }
-	             	     
-	     driver = new ChromeDriver(option);	     
-	     return driver;			 
+	    driver = new ChromeDriver(option);	 
+	    return driver;			 
 	 }
 	 
-	 public WebDriver getEdgeDriver()
+	 public static WebDriver createEdgeDriver()
 	 {
 		 edgeOption = new EdgeOptions();
 		 edgeOption.addArguments("--start-maximized");
@@ -74,45 +67,20 @@ public class Browser {
 		 edgeOption.addArguments("--incognito");	        
 		 edgeOption.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
 		 		  
-	     if(ConfigReader.get("headless") == "true") 
-	     {
-	    	 edgeOption.addArguments("--headless");
-	     }	
-	     	     
 		 driver = new EdgeDriver(edgeOption);
 		 return driver;
 	 }
 	 
-	 public WebDriver getFireFoxDriver()
+	 public static WebDriver getBrowserDriverInstance(String browser)
 	 {
-		 fireFoxOption = new FirefoxOptions(); 		 
-		 fireFoxOption.addArguments("--start-maximized");
-		 fireFoxOption.addArguments("--disable-notifications");
-		 fireFoxOption.addArguments("--disable-extentions");
-		 fireFoxOption.addArguments("--disable-popup-blocking");
-		 fireFoxOption.addArguments("--disable-gpu");
-		 fireFoxOption.addArguments("--no-sandbox");
-		 fireFoxOption.addArguments("--incognito");	        
-				 
-		 if(ConfigReader.get("headless") == "true") 
-	     {
-			 fireFoxOption.addArguments("--headless");
-	     }	
-		 
-		 driver = new FirefoxDriver(fireFoxOption);		 
-		 return driver;
-	 }
-	 
-	 WebDriver getBrowserDriver(String browser)
-	 {
-		 switch(browser.toLowerCase())
+		 if(browser.toLowerCase().contains("chrome"))
 		 {
-		 	case "chrome":
-		 		return getChromeDriver();
-		 	case "edge":
-		 		return getEdgeDriver();
-		 	default:
-		 		return getFireFoxDriver();
+		 	 return createChromeDriver();
+		 }
+		 
+		 else
+		 {
+		 	 return createEdgeDriver();
 		 }
 	 }	 	    
 	} 

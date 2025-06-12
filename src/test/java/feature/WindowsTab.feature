@@ -3,14 +3,16 @@ Feature: WindowsTab
   This feature file covers the login scenarios
 
   Background: 
-    Given User is on the Browser Windows page
+    Given the user navigates to DemoQA home page
+    And the user selects the Alerts, Frame & Windows from the menu
+  	And the user selects Browser Windows from sub-menu  
 
-  Scenario: TC123789 Verify page is opened up in new tab
-    When user clicks on New Tab button
-    And user navigates to the newly opened tab
-    Then newly opened tab is displayed with text "This is a sample page"
+  Scenario: TC123789 Verify the page opens in a new tab
+    When the user clicks the New Tab button
+    And the user switches to the newly opened tab
+    Then the new tab is displayed with the text "This is a sample page"
 
   Scenario: TC223789 Verify page is opened up in new window
-    When user clicks on New Window button
-    And user navigates to the newly opened window
-    Then newly opened window is displayed with text "This is a sample page"
+    When the user clicks the New Window button
+    And the user switches to the newly opened window
+    Then the new window is displayed with the text "This is a sample page"

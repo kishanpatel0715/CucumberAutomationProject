@@ -6,12 +6,18 @@ import helper.Browser;
 
 public class WindowsTab_Page {
 
-	WebDriver driver = Browser.getDriver();;
+	WebDriver driver = Browser.getBrowserDriverInstance();
 	
 	public By newTabElement = By.id("tabButton");
 	public By newTabTextElement = By.id("sampleHeading");
 	public By newWindowElement = By.id("windowButton");
 	public By newWindowTextElement = By.id("sampleHeading");
+	public By BrowserWindowsSubmenuElement = By.xpath("/html/body/div[2]/div/div/div/div[1]/div/div/div[3]/div/ul/li[1]/span");
+	
+	 public void selectBrowserWindowsFromSubMenu()
+	 {
+		 driver.findElement(BrowserWindowsSubmenuElement).click();
+	 }
 
 	public void openNewTab()
 	{

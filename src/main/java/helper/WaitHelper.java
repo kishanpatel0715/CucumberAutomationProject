@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class WaitHelper {
 
-	WebDriver driver = Browser.getDriver();;
+	WebDriver driver = Browser.getBrowserDriverInstance();;
     WebDriverWait wait;
 	
 	public WebElement waitForElementToBeVisible(By element, int timeOutInSeconds)

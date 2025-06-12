@@ -2,10 +2,13 @@
 Feature: Dynamic_Properties
   This feature file covers the Dynamic Properties scenarios
 
-  Scenario: TC223459 Verify button gets visible after 5 seconds
-    When user navigates to the Dynamic Properties page
+Background:
+    Given the user navigates to DemoQA home page
+    And user selects the Elements from menu
+    And user selects Dynamic Properties from sub-menu  
+		
+  Scenario: TC223459 Verify visibility of the button 
     Then after 5 seconds, button is visible
 
-  Scenario: TC323459 Verify button gets enabled after 5 seconds
-    When user navigates to the Dynamic Properties page
+  Scenario: TC323459 Verify button gets enabled 
     Then after 5 seconds, button is enabled

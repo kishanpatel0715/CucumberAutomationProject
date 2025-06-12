@@ -1,91 +1,103 @@
 package steps;
 
-import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import Context.AlertContext;
 import helper.Browser;
-import helper.CommonMethods;
 import helper.WaitHelper;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.Alerts_Page;
+import runner.TestRunner;
+
+import org.testng.Assert;
 
 public class Alert_StepDefinitions {
 
-	 WebDriver driver = Browser.getDriver();;
+	 WebDriver driver = Browser.getBrowserDriverInstance();
 	 WaitHelper waitHelper;
-	 CommonMethods commonMethods;
 	 Alerts_Page alerts_Page;
 	 AlertContext alertContext;
 
 	 public Alert_StepDefinitions(Browser manageDriver)
 	 {
 	     waitHelper = new WaitHelper();
-	     commonMethods = new CommonMethods();
-	     alerts_Page = new Alerts_Page(driver);
+	     alerts_Page = new Alerts_Page();
 	     alertContext = new AlertContext();
 	 }
+	 
+	 @Given("the user navigates to DemoQA home page")
+	 public void the_user_navigates_to_demoQA_home_page()
+	 {
+		 driver.get(TestRunner.baseUrlDemoQa);
+	 }
 
-     @When("user navigates to the Alerts, Frame & Windows page page")
-     public void WhenUserNavigatesToTheAlertsFrameWindowsPagePage()
+     @Given("the user selects the Alerts, Frame & Windows from the menu")
+     public void the_user_selects_the_alerts_frame_windows_from_the_menu() 
      {
-         commonMethods.visit("https://demoqa.com/alerts");
+    	 alerts_Page.selectAlertsFrameWindowsFromMenu();
      }
      
-     @When("user clicks on button to see alert")
-     public void WhenUserClicksOnButtonToSeeAlert()
+     @Given("the user selects Alerts from the sub-menu")
+     public void the_user_selects_alerts_from_the_submenu() 
+     {
+    	 alerts_Page.selectAlertsFromSubMenu();
+     }
+     
+     @When("the user opens the regular alert")
+     public void the_user_opens_the_regular_alert()
      {
          alerts_Page.openAlert();
      }
      
-     @Then("alert is displayed with text {string}")
-     public void ThenAlertIsDisplayedWithText(String alertExpectedText)
+     @Then("an alert is displayed with the text {string}")
+     public void an_alert_is_displayed_with_the_text(String alertExpectedText)
      {
     	Alert alert = driver.switchTo().alert();
-        Assert.assertEquals("Alert Text is incorrect", alertExpectedText, alert.getText());
+        Assert.assertEquals(alert.getText(), alertExpectedText, "Alert Text is incorrect");
      }
      
-     @When("user accepts the alert")
-     public void WhenUserAcceptsTheAlert()
+     @When("the user accepts the alert")
+     public void the_user_accepts_the_alert()
      {
     	Alert alert = driver.switchTo().alert();
     	alert.accept();
      }
      
-     @Then("alert is disappeared")
-     public void ThenAlertIsDisappeared()
+     @Then("the alert is no longer visible")
+     public void the_alert_is_no_longer_visible()
      {
-    	Assert.assertTrue("Alert is still present",driver.findElement(alerts_Page.AlertElement).isDisplayed());
+    	Assert.assertTrue(driver.findElement(alerts_Page.AlertElement).isDisplayed(), "Alert is still present");
      }
      
-     @When("user clicks on button to see delayed alert")
-     public void WhenUserClicksOnButtonToSeeDelayedAlert()
+     @When("the user opens the delayed alert")
+     public void the_user_opens_the_delayed_alert()
      {
     	alerts_Page.openDelayedAlert();
      }
      
-     @Then("delayed alert is displayed with text {string}")
-     public void ThenDelayedAlertIsDisplayedWithText(String alertExpectedText)
+     @Then("delayed alert is displayed with the text {string}")
+     public void delayed_alert_is_displayed_with_the_text(String alertExpectedText)
      {
     	waitHelper.waitForAlert(5);
      }
      
-     @When("user clicks on button to see confirm box")
-     public void WhenUserClicksOnButtonToSeeConfirmBox()
+     @When("the user opens the confirm box")
+     public void the_user_opens_the_confirm_box()
      {
     	alerts_Page.openConfirmBoxPopUp();
      }
      
-     @When("user cancels the alert")
-     public void WhenUserCancelsTheAlert()
+     @When("the user cancels the alert")
+     public void the_user_cancels_the_alert()
      {
     	//driver.SwitchTo().Alert().Dismiss();
     	waitHelper.waitForAlert(3).dismiss();
      }
      
      @Then("{string} message is displayed")
-     public void ThenMessageIsDisplayed(String expectedMessage)
+     public void message_is_displayed(String expectedMessage)
      {
     	String actualMessage;
 
@@ -98,19 +110,19 @@ public class Alert_StepDefinitions {
     		 actualMessage = driver.findElement(alerts_Page.ConfirmResultTextElement).getText();
     	}
 
-    	Assert.assertEquals("Incorrect message is displayed", expectedMessage, actualMessage);
+    	Assert.assertEquals(expectedMessage, actualMessage, "Incorrect message is displayed");
     }
      
-     @When("user clicks on button to see prompt box")
-     public void WhenUserClicksOnButtonToSeePromptBox()
+     @When("the user opens the prompt box")
+     public void the_user_opens_the_prompt_box()
      {
          alerts_Page.openPromptBoxPopUp();
      }
      
-     @When("user enters the name {string}")
-     public void WhenUserEntersTheName(String name)
+     @When("the user enters the name {string}")
+     public void the_user_enters_the_name(String name)
      {
-    	 alertContext.setName(name);
+    	alertContext.setName(name);
         Alert alert = driver.switchTo().alert();
     	alert.sendKeys(name);
      }

@@ -17,8 +17,8 @@ public class XMLSchema_StepDefinitions {
 
 	Response response;
 	
-	@When("user sends a SOAP request to do sum of two numbers {int} and {int}")
-	public void user_sends_a_soap_request_to_do_sum_of_two_numbers_and(Integer int1, Integer int2) throws IOException {
+	@When("the user sends a SOAP request to do sum of {int} and {int}")
+	public void the_user_sends_a_SOAP_request_to_do_sum_of_and(Integer int1, Integer int2) throws IOException {
 		
 		File soap_Add_Request_File = new File("./XML_SOAP_Req_Files/Calculator_Add_SOAP_Req.xml");
 		FileInputStream file = new FileInputStream(soap_Add_Request_File);
@@ -32,8 +32,8 @@ public class XMLSchema_StepDefinitions {
 		response.then().statusCode(responseStatusCode);
 	}
 	
-	@Then("XML Schema is verified successfully")
-	public void xml_schema_is_verified_successfully() {
+	@Then("the XML Schema is verified successfully")
+	public void the_XML_Schema_is_verified_successfully() {
 		response.then().assertThat().body(RestAssuredMatchers.matchesXsdInClasspath("sum_xml_schema.xsd"));		
 	}
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="tests" data-provider-thread-count="3" name="Failed suite [TestSuite]" guice-stage="DEVELOPMENT">
+  <parameter name="downloadPath" value="Downloads"/>
+  <parameter name="uploadPath" value="Uploads"/>
+  <parameter name="browser" value="chrome"/>
+  <parameter name="baseUrlDemoQa" value="https://demoqa.com/"/>
+  <parameter name="baseUrlSauceDemo" value="https://www.saucedemo.com/"/>
+  <parameter name="screenshotPath" value="Screenshots"/>
+  <test thread-count="5" parallel="tests" name="TestRun(failed)">
+    <classes>
+      <class name="runner.TestRunner">
+        <methods>
+          <include name="setUpClass"/>
+          <include name="runScenario" invocation-numbers="0 1"/>
+          <include name="tearDownClass"/>
+          <include name="setParameters"/>
+        </methods>
+      </class> <!-- runner.TestRunner -->
+    </classes>
+  </test> <!-- TestRun(failed) -->
+</suite> <!-- Failed suite [TestSuite] -->

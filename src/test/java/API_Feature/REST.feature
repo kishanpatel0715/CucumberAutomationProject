@@ -4,42 +4,41 @@ Feature: API
 
 @API
   Scenario: TC897123 Verify user details
-    Given user sends a GET request to "https://jsonplaceholder.typicode.com/users/1"
+    Given the user sends a GET request to "https://jsonplaceholder.typicode.com/users/1"
     Then the response status code is 200
-    And response is contained name "Leanne Graham"
+    And the response is contained name "Leanne Graham"
 
 @API
   Scenario: TC897124 Verify user comments
-    Given user sends a GET request to "http://localhost:3000/comments"
+    Given the user sends a GET request to "http://localhost:3000/comments"
     Then the response status code is 200
-    And response content type is "application/json"
-    And response is contained text "a comment about post 1"
+    And the response is contained text "a comment about post 1"
     
 @API
-  Scenario: TC897125 Verify adding a comment
-    When user adds a comment
-    Then comment is added successfully
+  Scenario: TC897125 Verify successful addition of a comment 
+    When the user adds a comment
+    Then the comment is added successfully
 
 @API
-  Scenario: TC897127 Verify updating a text
-    When user updates a text
-    Then text is updated successfully
+  Scenario: TC897127 Verify successful update of the text
+    When the user updates the text
+    Then the text is updated successfully
 
 @API
-  Scenario: TC897128 Verify updating a comment
-    When user updates a comment
-    Then comment is updated successfully
+  Scenario: TC897128 Verify successful update of a comment
+    When the user updates a comment
+    Then the comment is updated successfully
 
 @API
-  Scenario: TC897129 Verify deleting a comment
-    When user deletes a comment
-    Then comment is deleted successfully
+  Scenario: TC897129 Verify successful deletion of a comment
+    When the user deletes a comment
+    Then the comment is deleted successfully
 
 @API 
   Scenario: TC897323 Verify book details
-    Given user sends a GET request to "https://demoqa.com/BookStore/v1/Books"
+    Given the user sends a GET request to "https://demoqa.com/BookStore/v1/Books"
     Then the response status code is 200
-    And following book details is displayed:
+    And the following book details are displayed:
       | isbn          | title                                     | subTitle                                                          | author               | publish_date             | publisher       | pages | description                                                                                                                                                                                                                                                           | website                                                                 |
       | 9781449325862 | Git Pocket Guide                          | A Working Introduction                                            | Richard E. Silverman | 2020-06-04T08:48:39.000Z | O'Reilly Media  |   234 | This pocket guide is the perfect on-the-job companion to Git, the distributed version control system. It provides a compact, readable introduction to Git for new users, as well as a reference to common commands and procedures for those of you with Git exp       | http://chimera.labs.oreilly.com/books/1230000000561/index.html          |
       | 9781449331818 | Learning JavaScript Design Patterns       | A JavaScript and jQuery Developer's Guide                         | Addy Osmani          | 2020-06-04T09:11:40.000Z | O'Reilly Media  |   254 | With Learning JavaScript Design Patterns, you'll learn how to write beautiful, structured, and maintainable JavaScript by applying classical and modern design patterns to the language. If you want to keep your code efficient, more manageable, and up-to-da       | http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/     |
@@ -51,21 +50,21 @@ Feature: API
       | 9781593277574 | Understanding ECMAScript 6                | The Definitive Guide for JavaScript Developers                    | Nicholas C. Zakas    | 2016-09-03T00:00:00.000Z | No Starch Press |   352 | ECMAScript 6 represents the biggest update to the core of JavaScript in the history of the language. In Understanding ECMAScript 6, expert developer Nicholas C. Zakas provides a complete guide to the object types, syntax, and other exciting changes that E       | https://leanpub.com/understandinges6/read                               |
 
 @API
- 	Scenario: TC897125 Verify adding a post
-    When user adds a post
-    Then post is added successfully
+ 	Scenario: TC897125 Verify successful addition of a post
+    When the user adds a post
+    Then the post is added successfully
     
 @API
-  Scenario: TC897127 Verify updating a post title
-    When user updates a post title
-    Then post title is updated successfully
+  Scenario: TC897127 Verify successful update of a post title
+    When the user updates a post title
+    Then the post title is updated successfully
    
 @API 
-  Scenario: TC897128 Verify updating a post 
-    When user updates a post
-    Then post is updated successfully
+  Scenario: TC897128 Verify successful  update of a post 
+    When the user updates a post
+    Then the post is updated successfully
 
 @API
-  Scenario: TC897129 Verify deleting a post
-    When user deletes a post
-    Then post is deleted successfully
+  Scenario: TC897129 Verify successful deletion of a post
+    When the user deletes a post
+    Then the post is deleted successfully

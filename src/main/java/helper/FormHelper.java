@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class FormHelper {
 
-	WebDriver driver = Browser.getDriver();
+	WebDriver driver = Browser.getBrowserDriverInstance();
 	
 	public void enterFormFieldData(By element, String value)
 	{
