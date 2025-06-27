@@ -12,7 +12,7 @@ import io.cucumber.testng.CucumberOptions;
         glue = {"steps", "helper", "Models", "pages", "context", "api_Steps", "api_Pages"},
         plugin = {"pretty", "html:target/CucumberHtmlReport.html", "json:target/cucumber.json"},
         monochrome = true,
-        tags = "@DynamicProperties" 
+        tags = "@PracticeForm" 
         )
         
 public class TestRunner extends AbstractTestNGCucumberTests {

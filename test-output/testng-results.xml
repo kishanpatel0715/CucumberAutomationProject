@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-06-11T19:10:42 MDT" name="TestSuite" finished-at="2025-06-11T19:10:54 MDT" duration-ms="11756">
+  <suite started-at="2025-06-12T18:39:04 MDT" name="TestSuite" finished-at="2025-06-12T18:39:11 MDT" duration-ms="6665">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@21b2e768]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2025-06-11T19:10:42 MDT" name="TestRun" finished-at="2025-06-11T19:10:54 MDT" duration-ms="11756">
+    <test started-at="2025-06-12T18:39:04 MDT" name="TestRun" finished-at="2025-06-12T18:39:11 MDT" duration-ms="6665">
       <class name="runner.TestRunner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:runner.TestRunner@21b2e768]" started-at="2025-06-11T19:10:42 MDT" name="setUpClass" finished-at="2025-06-11T19:10:43 MDT" duration-ms="909" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:runner.TestRunner@21b2e768]" started-at="2025-06-12T18:39:04 MDT" name="setUpClass" finished-at="2025-06-12T18:39:05 MDT" duration-ms="516" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -21,7 +21,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method is-config="true" signature="setParameters(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:runner.TestRunner@21b2e768]" started-at="2025-06-11T19:10:43 MDT" name="setParameters" finished-at="2025-06-11T19:10:43 MDT" duration-ms="11" status="PASS">
+        <test-method is-config="true" signature="setParameters(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:runner.TestRunner@21b2e768]" started-at="2025-06-12T18:39:05 MDT" name="setParameters" finished-at="2025-06-12T18:39:05 MDT" duration-ms="2" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -57,39 +57,23 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setParameters -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@21b2e768]" started-at="2025-06-11T19:10:43 MDT" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-06-11T19:10:54 MDT" duration-ms="10558" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@21b2e768]" started-at="2025-06-12T18:39:05 MDT" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-06-12T18:39:11 MDT" duration-ms="6084" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["TC323459 Verify button gets enabled"]]>
+                <![CDATA["TC123459 Verify successful Practice Form submission"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Dynamic_Properties"]]>
+                <![CDATA["PracticeForm"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@21b2e768]" started-at="2025-06-11T19:10:43 MDT" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-06-11T19:10:54 MDT" duration-ms="10694" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["TC223459 Verify visibility of the button"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["Dynamic_Properties"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:runner.TestRunner@21b2e768]" started-at="2025-06-11T19:10:54 MDT" name="tearDownClass" finished-at="2025-06-11T19:10:54 MDT" duration-ms="75" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:runner.TestRunner@21b2e768]" started-at="2025-06-12T18:39:11 MDT" name="tearDownClass" finished-at="2025-06-12T18:39:11 MDT" duration-ms="25" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->

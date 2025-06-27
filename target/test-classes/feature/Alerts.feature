@@ -7,13 +7,13 @@ Feature: Alerts
     And the user selects the Alerts, Frame & Windows from the menu
     And the user selects Alerts from the sub-menu
 
-  Scenario: TC423459 Verify alert text for "Click Button to see alert" alert
+  Scenario: TC423459 Verify alert text and accept behavior
     When the user opens the regular alert
     Then an alert is displayed with the text "You clicked a button"
     When the user accepts the alert
     Then the alert is no longer visible
 
-  Scenario: TC523459 Verify alert text when it appeares after 5 seconds
+  Scenario: TC523459 Verify alert text when it appeares after 5 seconds and accept behavior
     When the user opens the delayed alert
     Then delayed alert is displayed with the text "This alert appeared after 5 seconds"
     When the user accepts the alert
